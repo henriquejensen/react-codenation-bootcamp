@@ -9,3 +9,6 @@
 5. arrow functions
 6. map, filter e reduce
 7. promises
+
+## Materias utilizados
+[JavaScript Visualizer by Tyler Mcginnis](https://tylermcginnis.com/javascript-visualizer/)
