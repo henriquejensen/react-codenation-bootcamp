@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Aprender o desenvolvimento de uma aplicação utilizando React dentro das melhores design patterns.
+Aprender o desenvolvimento de uma aplicação utilizando React dentro dos melhores design patterns.
 
 ## Público alvo
 
