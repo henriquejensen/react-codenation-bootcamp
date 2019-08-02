@@ -5,6 +5,7 @@ import About from "./pages/About";
 import NavBar from "./pages/NavBar";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
 
 export default class App extends React.Component {
   render() {
@@ -14,8 +15,9 @@ export default class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/products" component={Products} />
           <Route path="/contact" component={Contact} />
+          <Route exact path="/products" component={Products} />
+          <Route path="/products/:id" component={ProductDetail} />
         </Switch>
       </BrowserRouter>
     );
