@@ -1,53 +1,107 @@
-import React from 'react';
-import Title from './components/title';
-import Text from './components/text';
-import Content from './components/content';
+import React from "react";
 
+import "./App.css";
 
-import './App.css';
-
+const IMAGE =
+  "https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_960_720.png";
 class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    text: 'Número de clicks 0',
-    title: 'Meu titulo',
-    numberOfClicks: [0, 1,2,3,4]
+    console.log("constructor");
+    this.variavelDaClasse = "asdfasdf";
+    this.x = "1fsdgsdfgsd";
   }
 
-  handleClickButton() {
-    const lastIndex = this.state.numberOfClicks.length - 1;
-    const lastValue = this.state.numberOfClicks[lastIndex];
-    
+  state = {
+    post: "Meu Post",
+    image: ""
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("componentDidUpdate");
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  componentWillUnmount() {}
+
+  handleChange(value) {
     this.setState({
-      numberOfClicks: [...this.state.numberOfClicks, lastValue + 1]
+      post: value
     });
   }
 
   render() {
+    console.log("Render");
     return (
       <div>
-
-        {this.state.numberOfClicks.map(function(click) {
-          return <p>{`Número de clicks ${click}`}</p>
-        })}
-
-        <div>
-          <Text text={this.state.title} />
-        </div>
-
-        <div>
-          <Text text={this.state.text} />
-        </div>
-
-        <div>
-          <button onClick={() => this.handleClickButton()} >Mudar State</button>
-        </div>
-
-        <Title></Title>
-        <Content></Content>
+        <img src={this.state.image} alt="Meu avatar" width="20" height="20" />
+        <textarea
+          value={this.state.post}
+          onChange={event => this.handleChange(event.target.value)}
+        />
+        <Button>Publish</Button>
+        <Card>
+          <CardItem>T</CardItem>
+          <CardItem>T</CardItem>
+          <CardItem>T</CardItem>
+          <CardItem>T</CardItem>
+        </Card>
       </div>
     );
   }
+}
+
+class Card extends React.Component {
+  render() {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "black",
+          borderColor: "blue"
+        }}
+      >
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+class CardItem extends React.Component {
+  render() {
+    return (
+      <span
+        style={{
+          backgroundColor: "white",
+          borderColor: "red",
+          width: 10,
+          height: 10,
+          margin: 10,
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        {this.props.children}
+      </span>
+    );
+  }
+}
+
+function Button(props) {
+  return (
+    <button style={{ backgroundColor: "#36f021" }}>{props.children}</button>
+  );
 }
 
 export default App;
