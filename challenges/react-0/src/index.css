@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.App .container {
+  margin-top: 5rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row > div[class*="col-"] {
+  display: flex;
+}
+
+.card {
+  width: 100%;
+}
+
+mark {
+  padding: 0;
+  background-color: #ffd703;
+}
+
+.Navbar-logo {
+  height: 3rem;
+}
