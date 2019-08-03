@@ -2,21 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { slugify } from "../helpers";
 
-// http://localhost:3000/recipe/ginger-champagne
-// http://localhost:3000/recipe/Ginger%20Champagne
-
-const RecipeItem = ({ recipe }) => {
-  const { title, ingredients, thumbnail } = recipe;
+const RecipeItem = ({ recipe = {} }) => {
   return (
     <div className="col-sm-3 mt-4">
-      <Link to={`/recipe/${slugify(title)}`}>
+      <Link to={`/recipe/${slugify(recipe.title || '')}`}>
         <div className="card">
-          <img className="card-img-top img-fluid" src={thumbnail} alt="" />
+          <img
+            className="card-img-top img-fluid"
+            src={recipe.thumbnail}
+            alt=""
+          />
           <div className="card-body">
-            <h5 className="card-title">{title}</h5>
+            <h5 className="card-title">{recipe.title}</h5>
             <p className="card-text">
               <strong>Ingredients: </strong>
-              {ingredients}
+              {recipe.ingredients}
             </p>
           </div>
         </div>

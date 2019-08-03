@@ -3,18 +3,19 @@ import PropTypes from "prop-types";
 import RecipeItem from "./RecipeItem";
 
 const Home = ({ recipes = [], searchString = "" }) => {
-  const recipesFiltered = recipes.filter(recipe => {
+  const searchStringLower = searchString.toLowerCase();
+  const filteredRecipes = recipes.filter(recipe => {
     return (
-      recipe.title.toLowerCase().includes(searchString) ||
-      recipe.ingredients.toLowerCase().includes(searchString)
+      recipe.title.toLowerCase().includes(searchStringLower) ||
+      recipe.ingredients.toLowerCase().includes(searchStringLower)
     );
   });
 
   return (
     <div className="row">
-      {recipesFiltered.map(recipe => {
-        return <RecipeItem key={recipe.title} recipe={recipe} />;
-      })}
+      {filteredRecipes.map(recipe => (
+        <RecipeItem key={recipe.title} recipe={recipe} />
+      ))}
     </div>
   );
 };

@@ -11,7 +11,6 @@ const Navbar = ({ searchString, onChange }) => (
     <div className="form-group justify-content-center row col-10 my-2">
       <input
         value={searchString}
-        // TODO: onChange deve atualizar a URL
         onChange={onChange}
         className="form-control col-9 mr-2"
         type="search"
