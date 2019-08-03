@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 const API_DATA = {
   version: "1.0",
@@ -27,29 +26,24 @@ const API_DATA = {
   ]
 };
 
-export default class Products extends Component {
+export default class ProductDetail extends Component {
   state = {
-    products: []
+    product: {}
   };
 
   componentDidMount() {
-    this.setState({ products: API_DATA.products });
+    const productFiltered = API_DATA.products.find(
+      product => product.id.toString() === this.props.match.params.id
+    );
+    this.setState({ product: productFiltered });
   }
 
   render() {
-    if (this.state.products === undefined || this.state.products.length === 0) {
-      return <div>Nenhum produto listado</div>;
-    }
-
     return (
       <div>
-        {this.state.products.map(product => {
-          return (
-            <div key={product.id}>
-              <Link to={`/products/${product.id}`}>{product.name}</Link>
-            </div>
-          );
-        })}
+        <p>Product Detail</p>
+        <p>{this.state.product.name}</p>
+        <p>{this.state.product.content}</p>
       </div>
     );
   }
