@@ -1,23 +1,21 @@
-import React from 'react';
-import Title from './components/title';
-import Text from './components/text';
-import Content from './components/content';
+import React from "react";
+import Title from "./components/title";
+import Text from "./components/text";
+import Content from "./components/content";
 
-
-import './App.css';
+import "./App.css";
 
 class App extends React.Component {
-
   state = {
-    text: 'Número de clicks 0',
-    title: 'Meu titulo',
-    numberOfClicks: [0, 1,2,3,4]
-  }
+    text: "Número de clicks 0",
+    title: "Meu titulo",
+    numberOfClicks: [0, 1, 2, 3, 4]
+  };
 
   handleClickButton() {
     const lastIndex = this.state.numberOfClicks.length - 1;
     const lastValue = this.state.numberOfClicks[lastIndex];
-    
+
     this.setState({
       numberOfClicks: [...this.state.numberOfClicks, lastValue + 1]
     });
@@ -26,9 +24,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
         {this.state.numberOfClicks.map(function(click) {
-          return <p>{`Número de clicks ${click}`}</p>
+          return <p>{`Número de clicks ${click}`}</p>;
         })}
 
         <div>
@@ -40,11 +37,11 @@ class App extends React.Component {
         </div>
 
         <div>
-          <button onClick={() => this.handleClickButton()} >Mudar State</button>
+          <button onClick={() => this.handleClickButton()}>Mudar State</button>
         </div>
 
-        <Title></Title>
-        <Content></Content>
+        <Title />
+        <Content />
       </div>
     );
   }
