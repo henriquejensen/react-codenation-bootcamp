@@ -32,6 +32,10 @@ class App extends React.Component {
     products: PRODUCTS
   };
 
+  handleProducts = product => {
+    this.setState({ products: [...this.state.products, product] });
+  };
+
   render() {
     return (
       <Router>
@@ -42,7 +46,15 @@ class App extends React.Component {
               path="/"
               component={() => <ReadRecords products={this.state.products} />}
             />
-            <Route path="/product/create" component={CreateProduct} />
+            <Route
+              path="/product/create"
+              component={({ history }) => (
+                <CreateProduct
+                  history={history}
+                  onSaveProduct={this.handleProducts}
+                />
+              )}
+            />
             <Route path="/product/update/:id" component={UpdateProduct} />
             <Route path="/product/:id?" component={ReadOneProduct} />
           </Switch>

@@ -35,7 +35,8 @@ export default class CreateProduct extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    this.props.onSaveProduct(this.state);
+    this.props.history.push("/");
   };
 
   render() {
