@@ -2,23 +2,7 @@ import React from "react";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const PRODUCTS = [
-  {
-    name: "playstation",
-    description: "melhor videogame",
-    price: 1000,
-    category: "PERSONAL"
-  },
-  {
-    name: "camaro",
-    description: "melhor carro",
-    price: 100000,
-    category: "MOTORS"
-  }
-];
-
-export default function RecordsTable() {
-  const products = PRODUCTS;
+export default function RecordsTable({ products }) {
   return (
     <Table striped bordered hover>
       <thead>

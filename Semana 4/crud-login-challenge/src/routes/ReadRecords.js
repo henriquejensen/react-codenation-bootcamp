@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Row, Button } from "react-bootstrap";
 import RecordsTable from "../components/RecordsTable";
 
-function ReadRecords() {
+function ReadRecords({ products = [] }) {
   return (
     <>
       <Row>
@@ -17,7 +17,7 @@ function ReadRecords() {
         </Link>
       </Row>
       <Row>
-        <RecordsTable />
+        <RecordsTable products={products} />
       </Row>
     </>
   );
