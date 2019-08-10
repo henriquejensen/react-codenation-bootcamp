@@ -20,7 +20,6 @@ const PRODUCTS = [
 export default function ReadOneProduct({ match }) {
   const id = match.params.id;
   const product = PRODUCTS[id];
-  console.log(match);
   return (
     <Row>
       <Col md={12}>
