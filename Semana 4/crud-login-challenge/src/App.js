@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={ReadRecords} />
           <Route path="/product/create" component={CreateProduct} />
-          <Route path="/product/update" component={UpdateProduct} />
+          <Route path="/product/update/:id" component={UpdateProduct} />
           <Route path="/product/:id?" component={ReadOneProduct} />
         </Switch>
       </Container>
