@@ -36,6 +36,12 @@ class App extends React.Component {
     this.setState({ products: [...this.state.products, product] });
   };
 
+  handleUpdateProducts = (id, product) => {
+    const newProducts = [...this.state.products];
+    newProducts[id] = product;
+    this.setState({ products: newProducts });
+  };
+
   render() {
     return (
       <Router>
@@ -55,8 +61,26 @@ class App extends React.Component {
                 />
               )}
             />
-            <Route path="/product/update/:id" component={UpdateProduct} />
-            <Route path="/product/:id?" component={ReadOneProduct} />
+            <Route
+              path="/product/update/:id"
+              component={({ match, history }) => (
+                <UpdateProduct
+                  onSaveProduct={product =>
+                    this.handleUpdateProducts(match.params.id, product)
+                  }
+                  product={this.state.products[match.params.id]}
+                  history={history}
+                />
+              )}
+            />
+            <Route
+              path="/product/:id?"
+              component={({ match }) => (
+                <ReadOneProduct
+                  product={this.state.products[match.params.id]}
+                />
+              )}
+            />
           </Switch>
         </Container>
       </Router>

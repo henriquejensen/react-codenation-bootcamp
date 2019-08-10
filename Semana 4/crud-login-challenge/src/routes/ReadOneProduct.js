@@ -2,24 +2,7 @@ import React from "react";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const PRODUCTS = [
-  {
-    name: "playstation",
-    description: "melhor videogame",
-    price: 1000,
-    category: "PERSONAL"
-  },
-  {
-    name: "camaro",
-    description: "melhor carro",
-    price: 100000,
-    category: "MOTORS"
-  }
-];
-
-export default function ReadOneProduct({ match }) {
-  const id = match.params.id;
-  const product = PRODUCTS[id];
+export default function ReadOneProduct({ product }) {
   return (
     <Row>
       <Col md={12}>

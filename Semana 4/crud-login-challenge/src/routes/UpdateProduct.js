@@ -9,21 +9,6 @@ const CATEGORIES = {
   MOTORS: "Motors"
 };
 
-const PRODUCTS = [
-  {
-    name: "playstation",
-    description: "melhor videogame",
-    price: 1000,
-    category: "PERSONAL"
-  },
-  {
-    name: "camaro",
-    description: "melhor carro",
-    price: 100000,
-    category: "MOTORS"
-  }
-];
-
 export default class UpdateProduct extends React.Component {
   state = {
     name: "",
@@ -33,9 +18,7 @@ export default class UpdateProduct extends React.Component {
   };
 
   componentDidMount() {
-    const id = this.props.match.params.id;
-    const product = PRODUCTS[id];
-    this.setState({ ...product });
+    this.setState({ ...this.props.product });
   }
 
   handleName = event => {
@@ -56,7 +39,8 @@ export default class UpdateProduct extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    this.props.onSaveProduct(this.state);
+    this.props.history.push("/");
   };
 
   render() {
