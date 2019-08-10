@@ -2,7 +2,7 @@ import React from "react";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function RecordsTable({ products }) {
+export default function RecordsTable({ products, onDelete }) {
   return (
     <Table striped bordered hover>
       <thead>
@@ -30,7 +30,7 @@ export default function RecordsTable({ products }) {
                   <Link to={`/product/update/${index}`}>
                     <Button variant="primary">Editar</Button>
                   </Link>
-                  <Button onClick={() => alert("DELETAR")} variant="danger">
+                  <Button onClick={() => onDelete(index)} variant="danger">
                     Deletar
                   </Button>
                 </ButtonToolbar>

@@ -42,6 +42,12 @@ class App extends React.Component {
     this.setState({ products: newProducts });
   };
 
+  handleDelete = id => {
+    this.setState({
+      products: this.state.products.filter((prod, index) => index !== id)
+    });
+  };
+
   render() {
     return (
       <Router>
@@ -50,7 +56,12 @@ class App extends React.Component {
             <Route
               exact
               path="/"
-              component={() => <ReadRecords products={this.state.products} />}
+              component={() => (
+                <ReadRecords
+                  onDelete={this.handleDelete}
+                  products={this.state.products}
+                />
+              )}
             />
             <Route
               path="/product/create"
