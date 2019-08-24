@@ -2,40 +2,36 @@ import {
   all,
   /*takeEvery,*/ takeLatest,
   put,
-  select,
   call /*delay*/
 } from "redux-saga/effects";
 
 function apiGet(text, length) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(text + " " + (length + 1) + " !!!!!");
+      resolve([
+        { id: 1, text: "Notification 1" },
+        { id: 2, text: "Notification 2" },
+        { id: 3, text: "Notification 3" },
+        { id: 4, text: "Notification 4" }
+      ]);
     }, 2000);
   });
 }
 
-function* asyncAddTodo(action) {
+function* getTodoList() {
   try {
-    const todos = yield select(state => state.todos);
-    const text = yield call(apiGet, action.payload.text, todos.length);
+    const response = yield call(apiGet);
     yield put({
-      type: "ADD_TODO",
-      payload: { text }
+      type: "SUCCESS_TODO_LIST",
+      payload: { data: response }
     });
   } catch (error) {
     yield put({
-      type: "ERROR"
+      type: "FAILED_TODO_LIST"
     });
   }
 }
 
 export default function* root() {
-  // yield all([takeEvery("ASYNC_ADD_TODO", asyncAddTodo)]);
-  yield all([takeLatest("ASYNC_ADD_TODO", asyncAddTodo)]);
+  yield all([takeLatest("REQUEST_TODO_LIST", getTodoList)]);
 }
-
-/* function* generator() {
-  yield ...
-
-  yield ...
-} */

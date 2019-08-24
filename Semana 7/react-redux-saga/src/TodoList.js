@@ -4,14 +4,16 @@ import { bindActionCreators } from "redux";
 
 import * as TodoActions from "./store/actions";
 
-function TodoList({ todos, addTodo }) {
+function TodoList({ todos, requestTodoList }) {
   return (
-    <ul>
-      {todos.map(todo => (
-        <li key={todo.id}>{todo.text}</li>
-      ))}
-      <button onClick={() => addTodo("Fazer cafe")}>Novo Todo</button>
-    </ul>
+    <div>
+      <ul>
+        {todos.data.map(todo => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
+      <button onClick={() => requestTodoList()}>Carregar dados</button>
+    </div>
   );
 }
 

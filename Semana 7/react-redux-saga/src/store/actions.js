@@ -1,6 +1,3 @@
-export const addTodo = text => ({
-  type: "ASYNC_ADD_TODO",
-  payload: {
-    text
-  }
+export const requestTodoList = text => ({
+  type: "REQUEST_TODO_LIST"
 });
