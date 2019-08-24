@@ -1,10 +1,9 @@
-const initialState = [
-  { id: 1, tweet: "Hello World" },
-  { id: 2, tweet: "Mais um textao" }
-];
+const initialState = [];
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case "GET_ALL_TWEETS":
+      return [...state, ...payload];
     case "ADD_TWEET":
       return [...state, { id: Math.random(), tweet: payload }];
     case "REMOVE_TWEET":

@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as FeedActions from "../store/feed/actions";
+import * as ThunksFeedActions from "../store/feed/thunks";
 
 export class Feed extends Component {
+  componentDidMount() {
+    this.props.getAllTweets();
+  }
+
   handleDelete = tweet => {
     this.props.removeTweet(tweet);
   };
@@ -43,7 +48,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    removeTweet: tweet => dispatch(FeedActions.removeTweet(tweet.id))
+    removeTweet: tweet => dispatch(FeedActions.removeTweet(tweet.id)),
+    getAllTweets: () => dispatch(ThunksFeedActions.getAllTweets())
   };
 }
 
