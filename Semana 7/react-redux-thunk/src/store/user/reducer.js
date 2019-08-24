@@ -1,5 +1,5 @@
 const initialState = {
-  isLogged: true
+  isLogged: false
 };
 
 export default (state = initialState, { type }) => {

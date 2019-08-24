@@ -1,15 +1,19 @@
 import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-import Feed from "./containers/Feed";
 import store from "./store";
-import PostTweet from "./containers/PostTweet";
+import Home from "./containers/Home";
+import Login from "./containers/Login";
 
 function App() {
   return (
     <Provider store={store}>
-      <h1>Twitter Codenation</h1>
-      <PostTweet />
-      <Feed />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   );
 }
