@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PostTweet from "./PostTweet";
 import Feed from "./Feed";
+import * as UserThunks from "../store/user/thunks";
 
 function Home(props) {
   if (!props.user.isLogged) {
@@ -11,7 +12,10 @@ function Home(props) {
 
   return (
     <div>
-      <h1>Twitter Codenation</h1>
+      <div>
+        <h1>Twitter Codenation</h1>
+        <button onClick={props.logout}>Logout</button>
+      </div>
       <PostTweet {...props} />
       <Feed {...props} />
     </div>
@@ -24,4 +28,13 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Home);
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => dispatch(UserThunks.logout())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

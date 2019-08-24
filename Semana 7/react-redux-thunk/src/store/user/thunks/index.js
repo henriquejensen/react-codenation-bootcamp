@@ -1,9 +1,20 @@
-import { apiLogin } from "../api/index";
-import { login as actionLogin } from "../actions";
+import { apiLogin, apiLogout } from "../api/index";
+import {
+  login as actionLogin,
+  logout as actionLogout,
+  loginError
+} from "../actions";
 
 export const login = (email, password) => {
-  console.log("adfasd");
   return dispatch => {
-    apiLogin(email, password).then(result => dispatch(actionLogin(result)));
+    apiLogin(email, password)
+      .then(result => dispatch(actionLogin(result)))
+      .catch(err => dispatch(loginError(err)));
+  };
+};
+
+export const logout = () => {
+  return dispatch => {
+    apiLogout().then(result => dispatch(actionLogout()));
   };
 };

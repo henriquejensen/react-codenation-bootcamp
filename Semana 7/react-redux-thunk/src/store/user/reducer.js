@@ -1,14 +1,19 @@
 const initialState = {
-  isLogged: false
+  isLogged: false,
+  error: false,
+  message: ""
 };
 
-export default (state = initialState, { type }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case "LOGIN":
-      return { isLogged: true };
+      return { isLogged: true, error: false, message: "" };
 
     case "LOGOUT":
-      return { isLogged: false };
+      return { isLogged: false, error: false, message: "" };
+
+    case "LOGIN_FAILED":
+      return { isLogged: false, error: true, message: payload };
 
     default:
       return state;

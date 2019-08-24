@@ -35,6 +35,7 @@ class Login extends React.Component {
     return (
       <div>
         <h1>Login</h1>
+        <mark>{user.error && user.message}</mark>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Email</label>
@@ -46,6 +47,7 @@ class Login extends React.Component {
           <div>
             <label>Password</label>
             <input
+              type="password"
               value={password}
               onChange={e => this.handlePassword(e.target.value)}
             />
